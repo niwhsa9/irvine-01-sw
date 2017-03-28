@@ -73,7 +73,7 @@ TEST(BeaconDecode, DecodeMag)
 }
 
   */
-
+}
 /**
  * Test decoding temperature variables
  * @TODO create the data for this test
