@@ -55,9 +55,24 @@ TEST(BeaconDecode, DecodeGyro)
  **/
 TEST(BeaconDecode, DecodeMag)
 {
-  // @TODO
+  // @TODO check if valid, if it is, then substite actual values
+  // where does the telemetry come from? can't find the adcs-sensor-status
+  // are the values above arbitrary? 
+  /*
+  BeaconData beaconData;
+  beaconData.mag[0]=;
+  beaconData.mag[1]=;
+  beaconData.mag[2]=;
+
+  BeaconStatus bStatus(&beaconData);
+
+  ASSERT_EQ(bStatus.mag_[0], );
+  ASSERT_EQ(bStatus.mag_[1], );
+  ASSERT_EQ(bStatus.mag_[2], );
   FAIL()<<"Implement me";                       
 }
+
+  */
 
 /**
  * Test decoding temperature variables
