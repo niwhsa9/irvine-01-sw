@@ -24,6 +24,10 @@ namespace IrvCS
     // every member starting from gyro through curr5Vpl was already a value, so
     // i wrote the values in. however, what are the phrases that come after the
     // the arrows?
+    //
+    // @TODO find the BeaconData structure and replace the phrase after the
+    // arrows above to reflect the members of the structure
+
   }
 
   BeaconStatus::~BeaconStatus()
