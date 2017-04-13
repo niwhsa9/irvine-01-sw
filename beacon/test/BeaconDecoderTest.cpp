@@ -58,18 +58,17 @@ TEST(BeaconDecode, DecodeMag)
   // @TODO check if valid, if it is, then substite actual values
   // where does the telemetry come from? can't find the adcs-sensor-status
   // are the values above arbitrary? 
-  /*
+
   BeaconData beaconData;
-  beaconData.mag[0]=;
-  beaconData.mag[1]=;
-  beaconData.mag[2]=;
+  beaconData.mag[0]=htonl(-10212);
+  beaconData.mag[1]=htonl(-14628);
+  beaconData.mag[2]=htonl(-12972);
 
   BeaconStatus bStatus(&beaconData);
 
-  ASSERT_EQ(bStatus.mag_[0], );
-  ASSERT_EQ(bStatus.mag_[1], );
-  ASSERT_EQ(bStatus.mag_[2], );
-  FAIL()<<"Implement me";                       
+  ASSERT_EQ(bStatus.mag_[0], -10212);
+  ASSERT_EQ(bStatus.mag_[1], -14628);
+  ASSERT_EQ(bStatus.mag_[2], -12972);
 }
 
   */

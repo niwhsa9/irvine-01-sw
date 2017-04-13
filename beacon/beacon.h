@@ -18,13 +18,17 @@ typedef struct {
 
   uint16_t ldc;    /* Long Duration Timer (about 4min 15 sec/tick) */
 
-  uint32_t gyro[3]; 
-  uint32_t mag[3];  
+  int32_t gyro[3]; 
+  int32_t mag[3];  
   uint16_t daughter_aTmpSensor;
   uint16_t threeV_plTmpSensor;
   uint16_t tempNz;
 
   /* Power Data is 8 bytes */
+  /*
+   * uint32_t volt
+   * int32_t current
+   */
   struct PowerData threeVPwrSensor;
   struct PowerData fiveV_plPwrSensor;
 

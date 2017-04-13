@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
   if (numChars == sizeof(buf) || numChars > 227 )
   {
     std::cout << "Error:  Incoming stream is larger than expected ("
-              <<numChars<<")"<<std::endl;
+            <<numChars<<")"<<std::endl;
     status=1;
   } else
   {

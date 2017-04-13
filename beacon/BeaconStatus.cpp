@@ -7,8 +7,14 @@ namespace IrvCS
   {
     id_=data->id;
     ldc_=ntohs(data->ldc);
-    gyro_[3]=data->gyro;
-    mag_[3]=data->mag;
+    for (int i =0; i < 3; i++)
+    {
+      gyro_[i]=((int32_t)ntohl(data->gyro[i])/(1024.0*1024.0));
+    }
+    for (int i =0; i < 3; i++)
+    {
+      mag_[i]=(int32_t)ntohl(data->mag[i]);
+    }
     tempDaughterA_=data->tempDaughterA;
     tempThreeVpl_=data->tempThreeVpl;
     tempNz_=data->tempNz;
@@ -21,12 +27,8 @@ namespace IrvCS
     //       units.  See adc-sensors-util for example of int/uint->float
     //       conversion.
     //
-    // every member starting from gyro through curr5Vpl was already a value, so
-    // i wrote the values in. however, what are the phrases that come after the
-    // the arrows?
-    //
-    // @TODO find the BeaconData structure and replace the phrase after the
-    // arrows above to reflect the members of the structure
+    // updated the gyro and the mag to put in a cycler? to fill each of the
+    // bytes from 0 - 2 in sequence
 
   }
 
@@ -48,10 +50,24 @@ namespace IrvCS
     //
     return os<<"ID = "<<beaconStatus.id_<<std::endl
              <<"LDC = "<<beaconStatus.ldc_<<std::endl
-             <<"GYRO = "<<beaconStatus.gyro_[3]<<std::endl
-             <<"MAG = "<<beaconStatus.mag_[3]<<std::endl
-             <<"TEMP_DAUGHTERA = "<<beaconStatus.tempDaughterA_<<std::endl
-             <<"TEMP_3V_PAYLOAD = "<<beaconStatus.tempThreeVpl_<<std::endl
+             <<"GYRO = [";
+    for (int i=0; i < 3; i++)
+    {
+      if (i != 0)
+      {
+        os<<",";
+      }
+      os<<beaconStatus.gyro_[i];
+    }
+    os<<"]"<<std::endl
+      <<"MAG = "<<beaconStatus.mag_[3]<<std::endl
+      /*
+       * @TODO add the same style of cycler as did for gyro for mag
+       * check that the program is outputting the correct variable,
+       * to see if correct check beacon.h
+       */
+      <<"TEMP_DAUGHTERA = "<<beaconStatus.tempDaughterA_<<std::endl
+      <<"TEMP_3V_PAYLOAD = "<<beaconStatus.tempThreeVpl_<<std::endl
              <<"OUTSIDE_TEMP = "<<beaconStatus.tempNz_<<std::endl
              <<"3V_SENSOR_VOLTAGE = "<<beaconStatus.volt3V_<<std::endl
              <<"3V_SENSOR_CURRENT = "<<beaconStatus.volt3V_<<std::endl
